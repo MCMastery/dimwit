@@ -17,11 +17,11 @@
 
 <textarea cols="40" rows="5" placeholder="Input" id="input"></textarea>
 <br />
-<textarea id="code" rows="10" cols="75" placeholder="Code"></textarea>
+<textarea id="code" rows="10" cols="75" placeholder="Code" oninput="updateSize()" onchange="updateSize()"></textarea>
 <br />
 <div class="btn-group">
     <button class="btn btn-primary" onclick="run();">Run</button>
-    <button class="btn btn-secondary" disabled="disabled">Size: 0</button>
+    <button class="btn btn-secondary" disabled="disabled">Size: <span id="size">0</span></button>
 </div>
 <br />
 <textarea id="output" rows="10" cols="75" placeholder="Output"></textarea>
