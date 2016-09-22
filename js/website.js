@@ -1,6 +1,6 @@
 var index = window.location.href.indexOf("?");
 if (index >= 0) {
-    code = window.location.href.substring(index + 1);
+    code = decodeURIComponent(window.location.href.substring(index + 1));
     document.getElementById("code").value = code;
     updateSize();
 }
