@@ -1,0 +1,40 @@
+:root {
+    --primary: #20a6ee;
+    --gray: #e6e6e6;
+    --dark-gray: #ababab;
+}
+
+* {
+    font-family: Ubuntu Light, sans-serif;
+}
+
+.btn {
+    -webkit-transition: all 350ms;
+    -moz-transition: all 350ms;
+    -o-transition: all 350ms;
+    transition: all 350ms;
+}
+
+body {
+    text-align: center;
+    background-color: var(--gray);
+}
+
+h1, h2, h3, h4 {
+    text-shadow: 1px 1px black;
+}
+
+.jumbotron-fluid {
+    background-color: var(--primary);
+    color: white;
+    padding: 40px;
+    text-align: center;
+}
+
+textarea, input[type="text"] {
+    font-family: "Source Code Pro", monospace;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--dark-gray);
+    margin-top: 10px;
+}
