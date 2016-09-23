@@ -91,6 +91,15 @@ function evaluate(code) {
                 case 'x':
                     matrix = [[]];
                     break;
+                // split all arrays by spaces
+                case 's':
+                    for (var j = 0; j < matrix.length; j++) {
+                        var combined = "";
+                        for (var k = 0; k < matrix[j].length; k++)
+                            combined += matrix[j][k];
+                        matrix[j] = combined.split(" ");
+                    }
+                    break;
                 // counts occurrences of given regex, in first array
                 // also ignores case
                 case 'r':
@@ -102,6 +111,24 @@ function evaluate(code) {
                         if (matrix[0][j].match(regex))
                             occurrences++;
                     matrix[matrix.length - 1].push(occurrences);
+                    break;
+                // replace mapping
+                // Rx,y}s,z} will replace all x's with s's and y's with z's
+                case 'R':
+                    var nextBracketIndex = getNextBracket(code, i);
+                    var searches = code.substring(i + 1, nextBracketIndex).split(",");
+                    var nextNextBracketIndex = getNextBracket(code, nextBracketIndex + 1);
+                    i = nextNextBracketIndex;
+                    var replacements = code.substring(nextBracketIndex + 1, nextNextBracketIndex).split(",");
+                    console.log(replacements);
+                    for (var j = 0; j < matrix[0].length; j++) {
+                        for (var k = 0; k < searches.length; k++) {
+                            if (matrix[0][j].match(new RegExp(searches[k], 'gi'))) {
+                                matrix[0][j] = replacements[k];
+                                break;
+                            }
+                        }
+                    }
                     break;
                 // if inside loop, then checks if number is even
                 // otherwise checks last value in array
