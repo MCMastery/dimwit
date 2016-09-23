@@ -27,7 +27,7 @@ function getNextBracket(code, start) {
         }
     }
     if (nextBracketIndex < 0)
-        nextBracketIndex = code.length - 1;
+        nextBracketIndex = code.length;
     return nextBracketIndex;
 }
 
@@ -120,7 +120,6 @@ function evaluate(code) {
                     var nextNextBracketIndex = getNextBracket(code, nextBracketIndex + 1);
                     i = nextNextBracketIndex;
                     var replacements = code.substring(nextBracketIndex + 1, nextNextBracketIndex).split(",");
-                    console.log(replacements);
                     for (var j = 0; j < matrix[0].length; j++) {
                         for (var k = 0; k < searches.length; k++) {
                             if (matrix[0][j].match(new RegExp(searches[k], 'gi'))) {
